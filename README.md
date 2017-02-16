@@ -1,4 +1,4 @@
-# vue-webpack-boilerplate
+# vue-webpack-koa2-boilerplate
 
 > A full-featured Webpack setup with hot-reload, lint-on-save, unit testing & css extraction.
 
@@ -15,7 +15,7 @@ This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It
 
 ``` bash
 $ npm install -g vue-cli
-$ vue init webpack my-project
+$ vue init bonashen/vue-webpack-koa2-boilerplate my-project
 $ cd my-project
 $ npm install
 $ npm run dev
@@ -47,6 +47,8 @@ $ npm run dev
   - Works with one command out of the box:
     - Selenium and chromedriver dependencies automatically handled.
     - Automatically spawns the Selenium server.
+
+- `npm run start`: run build and standalone koa2 server
 
 ### Fork It And Make Your Own
 

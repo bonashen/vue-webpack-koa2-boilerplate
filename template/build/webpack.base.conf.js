@@ -9,7 +9,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: './src/client/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -29,8 +29,8 @@ module.exports = {
       'vue$': 'vue/dist/vue.common.js',
       {{/if_eq}}
       'src': resolve('src'),
-      'assets': resolve('src/assets'),
-      'components': resolve('src/components')
+      'assets': resolve('src/client/assets'),
+      'components': resolve('src/client/components')
     }
   },
   module: {
@@ -40,7 +40,7 @@ module.exports = {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: "pre",
-        include: [resolve('src'), resolve('test')],
+        include: [resolve('src/client'), resolve('test/client')],
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -54,20 +54,28 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src/client'), resolve('test/client')]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.svg(\?.*)?$/,
         loader: 'url-loader',
-        query: {
+        options: {
           limit: 10000,
+          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        }
+      },
+      {
+        test: /\.(png|jpe?g|gif)(\?.*)?$/,
+        loader: 'file-loader',
+        options: {
+          // limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
-        query: {
+        options: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }

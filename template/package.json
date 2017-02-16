@@ -5,7 +5,8 @@
   "author": "{{ author }}",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "start": "node build/build.js && cross-env DEBUG=koa*,app:* nodemon src/start.js",
+    "dev": "cross-env DEBUG=koa*,app:* nodemon build/dev-server.js",
     "build": "node build/build.js"{{#unit}},
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run"{{/unit}}{{#e2e}},
     "e2e": "node test/e2e/runner.js"{{/e2e}}{{#if_or unit e2e}},
@@ -13,6 +14,16 @@
     "lint": "eslint --ext .js,.vue src{{#unit}} test/unit/specs{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}"{{/lint}}
   },
   "dependencies": {
+    "kcors": "next",
+    "koa": "next",
+    "koa-bodyparser": "next",
+    "koa-compose": "next",
+    "koa-connect-history-api-fallback": "^0.3.1",
+    "koa-convert": "^1.2.0",
+    "koa-json": "next",
+    "koa-logger": "next",
+    "koa-router": "next",
+    "koa-static": "^2.1.0",
     "vue": "^2.1.10"{{#router}},
     "vue-router": "^2.2.0"{{/router}}
   },
@@ -47,16 +58,18 @@
     {{/if_eq}}
     {{/lint}}
     "eventsource-polyfill": "^0.9.6",
-    "express": "^4.14.1",
     "extract-text-webpack-plugin": "^2.0.0-rc.2",
+    "koa-webpack-dev-middleware": "^1.4.4",
+    "koa-webpack-hot-middleware": "^1.0.3",
     "file-loader": "^0.10.0",
     "friendly-errors-webpack-plugin": "^1.1.3",
     "function-bind": "^1.1.0",
     "html-webpack-plugin": "^2.28.0",
     "http-proxy-middleware": "^0.17.3",
     "webpack-bundle-analyzer": "^2.2.1",
-    {{#unit}}
     "cross-env": "^3.1.4",
+    "mocha": "^3.2.0",
+    {{#unit}}
     "karma": "^1.4.1",
     "karma-coverage": "^1.1.1",
     "karma-mocha": "^1.3.0",
@@ -66,7 +79,6 @@
     "karma-spec-reporter": "0.0.26",
     "karma-webpack": "^2.0.2",
     "lolex": "^1.5.2",
-    "mocha": "^3.2.0",
     "chai": "^3.5.0",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
