@@ -24,6 +24,7 @@
     "koa-logger": "next",
     "koa-router": "next",
     "koa-static": "^2.1.0",
+    "koa-unless": "^1.0.0",
     "vue": "^2.1.10"{{#router}},
     "vue-router": "^2.2.0"{{/router}}
   },
@@ -69,6 +70,7 @@
     "webpack-bundle-analyzer": "^2.2.1",
     "cross-env": "^3.1.4",
     "mocha": "^3.2.0",
+    "nodemon": "^1.11.0",
     {{#unit}}
     "karma": "^1.4.1",
     "karma-coverage": "^1.1.1",
