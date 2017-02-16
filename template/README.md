@@ -31,6 +31,9 @@ npm run e2e
 # run all tests
 npm test
 {{/if_or}}
+
+# build and run in production
+npm start
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
